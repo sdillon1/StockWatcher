@@ -13,7 +13,7 @@ public class Hello {
     public static void main(String args[]) {
 
         try {
-            Stock stock = YahooFinance.get("INTC");
+            Stock stock = YahooFinance.get("PSUN");
 
             BigDecimal price = stock.getQuote().getPrice();
             BigDecimal change = stock.getQuote().getChangeInPercent();
@@ -21,6 +21,10 @@ public class Hello {
             BigDecimal dividend = stock.getDividend().getAnnualYieldPercent();
 
             stock.print();
+
+
+            System.out.println("The current price of " + stock.getName() + " is: " + price);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
