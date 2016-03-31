@@ -1,5 +1,8 @@
+import java.math.BigDecimal;
+
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
+
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -11,6 +14,8 @@ public class Hello {
 
 
     public static void main(String args[]) {
+
+
 
         try {
             Stock stock = YahooFinance.get("PSUN");
