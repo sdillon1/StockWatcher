@@ -6,6 +6,8 @@ import yahoofinance.YahooFinance;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Sean on 3/31/2016.
@@ -13,10 +15,48 @@ import java.math.BigDecimal;
 public class Hello {
 
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
 
 
 
+
+
+        String symbol = "PSUN";
+        String symbol2 = "SYMC";
+        BuyOnPriceIncrease bi = new BuyOnPriceIncrease(symbol);
+        BuyOnPriceDecrease bd = new BuyOnPriceDecrease(symbol2);
+
+        Timer timer = new Timer();
+        TimerTask myTask = new TimerTask() {
+            @Override
+            public void run() {
+                // whatever you need to do every 2 seconds
+                try {
+                    bi.refresh();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        //timer.schedule(myTask, 2000, 2000);
+
+        Timer timer2 = new Timer();
+        TimerTask myTask2 = new TimerTask() {
+            @Override
+            public void run() {
+                // whatever you need to do every 2 seconds
+                try {
+                    bd.refresh();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        //timer2.schedule(myTask, 2000, 2000);
+
+/*
         try {
             Stock stock = YahooFinance.get("PSUN");
 
@@ -34,7 +74,13 @@ public class Hello {
             e.printStackTrace();
         }
 
+     */
+
 
     }
+
+    public void refresh(BuyOnPriceIncrease b) throws IOException {
+        b.refresh();
+    };
 
 }
