@@ -5,14 +5,14 @@ import java.io.IOException;
 /**
  * Created by Sean on 3/31/2016.
  */
-public interface Stock_Interface {
+abstract public class Stock_Interface {
 
-    public Stock getStock();
-    public void setStock();
-    public int whatShouldIDo();
-    public void initializeStrategy();
-    public void printStuff();
-    public void print(String s);
-    public void refresh() throws IOException;
+    public abstract Stock getStock();
+    public abstract void setStock();
+    public abstract int whatShouldIDo();
+    public abstract void initializeStrategy();
+    public abstract void printStuff();
+    public abstract void print(String s);
+    public abstract void refresh() throws IOException;
 
 }

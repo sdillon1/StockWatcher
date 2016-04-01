@@ -6,6 +6,11 @@ import yahoofinance.YahooFinance;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -18,13 +23,11 @@ public class Hello {
     public static void main(String args[]) throws IOException {
 
 
-
-
-
         String symbol = "PSUN";
         String symbol2 = "SYMC";
         BuyOnPriceIncrease bi = new BuyOnPriceIncrease(symbol);
         BuyOnPriceDecrease bd = new BuyOnPriceDecrease(symbol2);
+        RandomStrategy r = new RandomStrategy(symbol);
 
         Timer timer = new Timer();
         TimerTask myTask = new TimerTask() {
@@ -82,5 +85,9 @@ public class Hello {
     public void refresh(BuyOnPriceIncrease b) throws IOException {
         b.refresh();
     };
+
+    public static void print(String s){
+        System.out.println(s);
+    }
 
 }

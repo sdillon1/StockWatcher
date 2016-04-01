@@ -17,7 +17,7 @@ import java.math.BigDecimal;
     o	holds otherwise
 */
 
-public class BuyOnPriceDecrease implements Stock_Interface {
+public class BuyOnPriceDecrease extends Stock_Interface {
 
     Stock stock;
     BigDecimal last, close;

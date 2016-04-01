@@ -16,7 +16,7 @@ Buys if the stock price has increased recently and sells if the price has declin
 */
 
 
-public class BuyOnPriceIncrease implements Stock_Interface {
+public class BuyOnPriceIncrease extends Stock_Interface {
 
     Stock stock;
     BigDecimal last, close;
