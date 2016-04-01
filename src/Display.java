@@ -1,3 +1,6 @@
+import yahoofinance.Stock;
+import yahoofinance.YahooFinance;
+
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
@@ -10,6 +13,7 @@ import java.awt.event.ActionListener;
 public class Display {
     JFrame jframe;
     JTextArea stockDisplay;
+    JTextArea stockInfoDisplay;
     JTextArea adviceDisplay;
     JRadioButton oneStrategy;
     JRadioButton alternateStrategy;
@@ -25,14 +29,43 @@ public class Display {
         display.go();
     }
 
+    public void updateStockDisplay(Stock stock){
+        stockDisplay.setText("");
+        stockInfoDisplay.setText("");
+        stockDisplay.append("Stock Symbol:" + '\n');
+        stockInfoDisplay.append(stock.getSymbol() + '\n');
+        stockDisplay.append("Current price of the stock:" + '\n');
+        stockInfoDisplay.append("" + stock.getQuote().getPrice() + '\n');
+        stockDisplay.append("Last trade day for the stock:" + '\n');
+        stockInfoDisplay.append("" + stock.getQuote().getLastTradeDateStr() + '\n');
+        stockDisplay.append("Last time of trade for the stock:" + '\n');
+        stockInfoDisplay.append(""+ stock.getQuote().getLastTradeTimeStr() + '\n');
+        stockDisplay.append("Price at which the stock opened the day:" + '\n');
+        stockInfoDisplay.append(""+ stock.getQuote().getOpen() + '\n');
+        stockDisplay.append("Highest price of the stock for the day:" + '\n');
+        stockInfoDisplay.append(""+ stock.getQuote().getDayHigh() + '\n');
+        stockDisplay.append("Lowest price of the stock for the day:" + '\n');
+        stockInfoDisplay.append(""+ stock.getQuote().getDayLow() + '\n');
+        stockDisplay.append("Price at which the stock closed the last day:" + '\n');
+        stockInfoDisplay.append(""+ stock.getQuote().getDayHigh() + '\n');
+        stockDisplay.append("Amount of stocks that were traded during the day:" + '\n');
+        stockInfoDisplay.append(""+ stock.getQuote().getVolume() + '\n');
+        stockDisplay.append("Company name:" + '\n');
+        stockInfoDisplay.append(""+ stock.getName() + '\n');
+    }
     public void go(){
         jframe = new JFrame();
 
         //make stock display box
         stockDisplay = new JTextArea();
         stockDisplay.setEditable(false);
-        stockDisplay.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
-        stockDisplay.setBounds(50, 50, 700, 300);
+        stockDisplay.setBorder(new MatteBorder(1, 1, 1, 0, Color.BLACK));
+        stockDisplay.setBounds(50, 50, 350, 300);
+
+        stockInfoDisplay = new JTextArea();
+        stockInfoDisplay.setEditable(false);
+        stockInfoDisplay.setBorder(new MatteBorder(1, 0, 1, 1, Color.BLACK));
+        stockInfoDisplay.setBounds(400, 50, 350, 300 );
 
         //make advice display box
         adviceDisplay = new JTextArea();
@@ -47,15 +80,37 @@ public class Display {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println(chooseStock.getSelectedItem());
+                Stock stock;
                 if (chooseStock.getSelectedItem() == stocks[0]) {
                     //update stockDisplay
                     //update
+                    try {
+                        stock = YahooFinance.get("AAPL");
+                        updateStockDisplay(stock);
+                    }catch(Exception ex){
+
+                    }
                 } else if (chooseStock.getSelectedItem() == stocks[1]) {
+                    try {
+                        stock = YahooFinance.get("GOOG");
+                        updateStockDisplay(stock);
+                    }catch(Exception ex){
 
+                    }
                 } else if (chooseStock.getSelectedItem() == stocks[2]) {
+                    try {
+                        stock = YahooFinance.get("SYMC");
+                        updateStockDisplay(stock);
+                    }catch(Exception ex){
 
+                    }
                 } else if (chooseStock.getSelectedItem() == stocks[3]) {
+                    try {
+                        stock = YahooFinance.get("PSUN");
+                        updateStockDisplay(stock);
+                    }catch(Exception ex){
 
+                    }
                 }
             }
         });
@@ -67,7 +122,11 @@ public class Display {
         oneStrategy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(e.getActionCommand());
+                try{
+
+                }catch(Exception ex){
+
+                }
             }
         });
         alternateStrategy = new JRadioButton("Sell if increased");
@@ -105,6 +164,7 @@ public class Display {
 
         //add components to display
         jframe.add(stockDisplay);
+        jframe.add(stockInfoDisplay);
         jframe.add(chooseStock);
         jframe.add(adviceDisplay);
         jframe.add(oneStrategy);
