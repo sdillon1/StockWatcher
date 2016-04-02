@@ -25,9 +25,9 @@ public class Hello {
 
         String symbol = "PSUN";
         String symbol2 = "SYMC";
-        BuyOnPriceIncrease bi = new BuyOnPriceIncrease(symbol);
-        BuyOnPriceDecrease bd = new BuyOnPriceDecrease(symbol2);
-        RandomStrategy r = new RandomStrategy(symbol);
+        BuyOnPriceIncrease bi = new BuyOnPriceIncrease(symbol, null);
+        BuyOnPriceDecrease bd = new BuyOnPriceDecrease(symbol2, null);
+        RandomStrategy r = new RandomStrategy(symbol, null);
 
         Timer timer = new Timer();
         TimerTask myTask = new TimerTask() {

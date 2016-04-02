@@ -1,6 +1,7 @@
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 
@@ -29,9 +30,11 @@ public class BuyOnPriceIncrease extends Stock_Interface {
     String symbol;
 
 
-    public BuyOnPriceIncrease (String s) throws IOException{
+    public BuyOnPriceIncrease (String s, JTextArea j) throws IOException{
 
         symbol = s;
+        adviceDisplay = j;
+
         stock = YahooFinance.get(s);
 
         initializeStrategy();
@@ -70,11 +73,12 @@ public class BuyOnPriceIncrease extends Stock_Interface {
             if(result == 1 || result == 0){
                 //stock price increased greater than 5 percent so must buy
                 print(symbol + " " + " BUY!" + " using: " + strategyName);
+                printAdvice(symbol, BUY);
 
             }else{
                 //stock price is neither greater that 5% increase or grester tahn 5% decrese so must hold
                 print(symbol + " " + "JOLD!" + " using: " + strategyName);
-
+                printAdvice(symbol, HOLD);
             }
 
         }else{
@@ -84,10 +88,12 @@ public class BuyOnPriceIncrease extends Stock_Interface {
             if(result == 1){
                 //stock price increased greater than 5 percent so must buy
                 print(symbol + " " + "HOLD!" + " using: " + strategyName);
+                printAdvice(symbol, HOLD);
 
             }else if(result == -1 || result == 0){
                 //stock price is neither greater that 5% increase or grester tahn 5% decrese so must hold
                 print(symbol + " " + "SELL!" + " using: " + strategyName);
+                printAdvice(symbol, SELL);
 
             }
 

@@ -6,6 +6,7 @@ import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * Created by jskarda on 3/31/16.
@@ -23,6 +24,10 @@ public class Display {
     JComboBox chooseStock;
     private String[] stocks = {"Apple", "Google", "Symantec", "Pacsun"};
 
+    BuyOnPriceIncrease buyOnPriceIncrease;
+    BuyOnPriceDecrease buyOnPriceDecrease;
+    RandomStrategy randomStrategyStrategy;
+    String currentSymbol;
 
     public static void main(String[] args){
         Display display = new Display();
@@ -122,10 +127,13 @@ public class Display {
         oneStrategy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try{
 
-                }catch(Exception ex){
-
+                //buy on price increase
+                currentSymbol = getSelectedSymbol();
+                try {
+                    buyOnPriceIncrease = new BuyOnPriceIncrease(currentSymbol, adviceDisplay);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
                 }
             }
         });
@@ -134,7 +142,14 @@ public class Display {
         alternateStrategy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(e.getActionCommand());
+                currentSymbol = getSelectedSymbol();
+
+                try {
+                    buyOnPriceDecrease = new BuyOnPriceDecrease(currentSymbol, adviceDisplay);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
             }
         });
         randomStrategy = new JRadioButton("Random strategy");
@@ -142,7 +157,14 @@ public class Display {
         randomStrategy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(e.getActionCommand());
+                currentSymbol = getSelectedSymbol();
+
+                try {
+                    randomStrategyStrategy = new RandomStrategy(currentSymbol, adviceDisplay);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
             }
         });
         ownStrategy = new JRadioButton("Crazy strategy");
@@ -150,7 +172,7 @@ public class Display {
         ownStrategy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(e.getActionCommand());
+                currentSymbol = getSelectedSymbol();
             }
         });
 
@@ -175,4 +197,57 @@ public class Display {
         jframe.setLayout(null);
         jframe.setVisible(true);
     }
+
+    public String getSelectedSymbol(){
+
+        String returnString = null;
+
+        if (chooseStock.getSelectedItem() == stocks[0]) {
+
+            print (chooseStock.getSelectedItem().toString());
+            returnString = "AAPL";
+
+        } else if (chooseStock.getSelectedItem() == stocks[1]) {
+
+            print (chooseStock.getSelectedItem().toString());
+            returnString = "GOOG";
+
+        } else if (chooseStock.getSelectedItem() == stocks[2]) {
+
+            print (chooseStock.getSelectedItem().toString());
+            returnString = "SYMC";
+
+        } else if (chooseStock.getSelectedItem() == stocks[3]) {
+
+            print (chooseStock.getSelectedItem().toString());
+            returnString = "PSUN";
+
+        }
+
+        return returnString;
+
+    }
+
+    public void print(String s){
+        System.out.println(s);
+    }
+
+    public void printAdvice(int whichOne){
+
+        //whichOne will be 1 2 or 3 for buy hold sell
+
+        String advice = null;
+
+        if(whichOne == 1) {
+            advice = "BUY";
+        }else if(whichOne == 2){
+            advice = "HOLD";
+        }else if(whichOne == 3){
+            advice = "SELL";
+        }
+
+        print("An old wise man said to " + advice + " the stock");
+
+    }
+
 }

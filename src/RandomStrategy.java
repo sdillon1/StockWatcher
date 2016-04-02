@@ -1,6 +1,7 @@
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Time;
@@ -38,11 +39,12 @@ public class RandomStrategy extends Stock_Interface{
     int time_1_minutes, time_2_minutes, time_current_minutes;
     int num_of_chars_in_symbol;
 
-    public RandomStrategy(String s) throws IOException {
+    public RandomStrategy(String s, JTextArea j) throws IOException {
 
         print(LocalTime.now().toString());
 
         symbol = s;
+        adviceDisplay = j;
 
         stock = YahooFinance.get(s);
 
@@ -85,17 +87,20 @@ public class RandomStrategy extends Stock_Interface{
 
             //buy
             print(symbol + " "+ "BUY!" + " using: " + strategyName);
+            printAdvice(symbol, BUY);
             return 1;
 
         }else if (checkTime() == true){
 
             //sell
             print(symbol + " "+ "SELL!" + " using: " + strategyName);
+            printAdvice(symbol, SELL);
             return 3;
 
         }else{
             //else hold
             print(symbol + " "+ "HOLD!" + " using: " + strategyName);
+            printAdvice(symbol, HOLD);
             return 2;
         }
 
