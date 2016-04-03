@@ -81,7 +81,7 @@ public class Display {
         yourPortfolio = new JTextArea();
         yourPortfolio.setEditable(false);
         yourPortfolio.setBorder(new MatteBorder(1, 0, 1, 1, Color.BLACK));
-        yourPortfolio.setBounds(500, 50, 200, 300 ); //250 left in width
+        yourPortfolio.setBounds(550, 50, 200, 300 ); //250 left in width
         yourPortfolio.setText("dongus");
 
         portfolio = new Portfolio(yourPortfolio);

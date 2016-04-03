@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 /**
  * Created by Sean on 4/3/2016.
  */
@@ -37,5 +39,9 @@ public class PortfolioStock {
 
     public void printStock(){
         System.out.println("Symbol: " + symbol + " Shares: " + numShares);
+    }
+
+    public void addStockToDisplay(JTextArea jTextArea){
+        jTextArea.append("Symbol: " + symbol + " Shares: " + numShares + "\n");
     }
 }

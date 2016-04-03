@@ -12,6 +12,8 @@ import java.util.ArrayList;
 public class Portfolio {
 
     double moneyInTheBank;
+    boolean isError = false;
+    String errorString = "";
     JTextArea jTextArea;
     PortfolioStock stockArray [];
     ArrayList<PortfolioStock> stockArrayList;
@@ -44,6 +46,7 @@ public class Portfolio {
         readStocksOwned();
 
         printPortfolio();
+        updateTextArea();
 
         writeToStockFile();
 
@@ -51,46 +54,39 @@ public class Portfolio {
 
     }
 
-    public void addToTextArea(String s){
-        jTextArea.append(" " + s);
+    public void updateTextArea(){
+        jTextArea.setText("                   ***_Portfolio_***\n\n");
+        addToTextArea("         $$__YOUR_DOLLAS__$$: \n" + "$" + moneyInTheBank + "\n");
+        writePortfolioToDisplay();
+        if(isError == true){
+            printError();
+            isError = false;
+        }
+
+        writeBankMoney();
+
     }
 
-    public void readBankMoney(){
+    public void setError(String error){
+        isError = true;
+        errorString = error;
+    }
 
-// The name of the file to open.
-        String fileName = "src/bank.txt";
+    public void printError(){
+        addToTextArea("\n" + errorString);
+    }
 
-        // This will reference one line at a time
-        String line = null;
+    public void addToTextArea(String s){
+        jTextArea.append(s + "\n");
+    }
 
-        try {
-            // FileReader reads text files in the default encoding.
-            FileReader fileReader =
-                    new FileReader(fileName);
-
-            // Always wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader =
-                    new BufferedReader(fileReader);
-
-            while((line = bufferedReader.readLine()) != null) {
-                moneyInTheBank = Double.parseDouble(line);
-
+    public void writePortfolioToDisplay(){
+        if(stockArrayList.size() == 0){
+            print("No stocks owned");
+        }else {
+            for (int i = 0; i < stockArrayList.size(); i++) {
+                stockArrayList.get(i).addStockToDisplay(jTextArea);
             }
-
-            // Always close files.
-            bufferedReader.close();
-        }
-        catch(FileNotFoundException ex) {
-            System.out.println(
-                    "Unable to open file '" +
-                            fileName + "'");
-        }
-        catch(IOException ex) {
-            System.out.println(
-                    "Error reading file '"
-                            + fileName + "'");
-            // Or we could just do this:
-            // ex.printStackTrace();
         }
     }
 
@@ -102,6 +98,7 @@ public class Portfolio {
 
         if(stockArrayList.size() == 0){
             print("No stocks owned");
+            setError("No stocks owned");
         }else {
             for (int i = 0; i < stockArrayList.size(); i++) {
                 stockArrayList.get(i).printStock();
@@ -132,6 +129,7 @@ public class Portfolio {
 
         print("Stock added");
         printPortfolio();
+        updateTextArea();
         //writeToStockFile();
 
     }
@@ -141,24 +139,37 @@ public class Portfolio {
         int whereToAdd = getStockIndex(symbol);
 
         if(whereToAdd == -1){
-            print("here");
 
-            //symbol was not found so add stock at the end
-            stockArrayList.add(new PortfolioStock(symbol, numSharesToAdd));
-            moneyInTheBank = moneyInTheBank - (numSharesToAdd * price);
+            if(canBuy(price, numSharesToAdd) == true) {
+
+                //symbol was not found so add stock at the end
+                stockArrayList.add(new PortfolioStock(symbol, numSharesToAdd));
+                moneyInTheBank = moneyInTheBank - (numSharesToAdd * price);
+                print("Stock bought");
+            }else{
+                print("Error: not enough money");
+                setError("Error: not enough money");
+            }
 
         }else{
-            print("here2");
-            //just update the shares owned
-            stockArrayList.get(whereToAdd).printStock();
-            stockArrayList.get(whereToAdd).addMoreStock(numSharesToAdd);
-            stockArrayList.get(whereToAdd).printStock();
-            moneyInTheBank = moneyInTheBank - (numSharesToAdd * price);
+
+            if(canBuy(price, numSharesToAdd) == true) {
+                //just update the shares owned
+                stockArrayList.get(whereToAdd).printStock();
+                stockArrayList.get(whereToAdd).addMoreStock(numSharesToAdd);
+                stockArrayList.get(whereToAdd).printStock();
+                moneyInTheBank = moneyInTheBank - (numSharesToAdd * price);
+                print("Stock bought");
+            }else{
+                print("Error: not enough money");
+                setError("Error: not enough money");
+            }
 
         }
 
-        print("Stock bought");
+
         printPortfolio();
+        updateTextArea();
         writeToStockFile();
 
     }
@@ -171,17 +182,26 @@ public class Portfolio {
 
             //symbol was not found so add stock at the end
             print("Error: The stock is not there");
+            setError("Error: The stock is not there");
 
         }else{
 
-            //just update the shares owned
-            stockArrayList.get(whereToAdd).sellSomeStock(numSharesToSell);
-            moneyInTheBank = moneyInTheBank + (numSharesToSell * price);
+            if(canSell(numSharesToSell, stockArrayList.get(whereToAdd).getNumShares()) == true) {
+
+                //just update the shares owned
+                stockArrayList.get(whereToAdd).sellSomeStock(numSharesToSell);
+                moneyInTheBank = moneyInTheBank + (numSharesToSell * price);
+                print("Stock sold");
+            }else{
+                print("Error: not enough stocks owned to sell");
+                setError("Error: not enough stocks owned to sell");
+            }
 
         }
 
-        print("Stock sold");
+
         printPortfolio();
+        updateTextArea();
         writeToStockFile();
 
     }
@@ -276,6 +296,105 @@ public class Portfolio {
                             + fileName + "'");
             // Or we could just do this:
             // ex.printStackTrace();
+        }
+    }
+
+    public void readBankMoney(){
+
+// The name of the file to open.
+        String fileName = "src/bank.txt";
+
+        // This will reference one line at a time
+        String line = null;
+
+        try {
+            // FileReader reads text files in the default encoding.
+            FileReader fileReader =
+                    new FileReader(fileName);
+
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReader =
+                    new BufferedReader(fileReader);
+
+            while((line = bufferedReader.readLine()) != null) {
+                moneyInTheBank = Double.parseDouble(line);
+
+            }
+
+            // Always close files.
+            bufferedReader.close();
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println(
+                    "Unable to open file '" +
+                            fileName + "'");
+        }
+        catch(IOException ex) {
+            System.out.println(
+                    "Error reading file '"
+                            + fileName + "'");
+            // Or we could just do this:
+            // ex.printStackTrace();
+        }
+    }
+
+    public void writeBankMoney(){
+
+// The name of the file to open.
+        String fileName = "src/bank.txt";
+
+        try {
+            // Assume default encoding.
+            FileWriter fileWriter =
+                    new FileWriter(fileName);
+
+            // Always wrap FileWriter in BufferedWriter.
+            BufferedWriter bufferedWriter =
+                    new BufferedWriter(fileWriter);
+
+            // Note that write() does not automatically
+            // append a newline character.
+
+            for(int i = 0; i < stockArrayList.size(); i++){
+                bufferedWriter.write(String.valueOf(moneyInTheBank));
+                bufferedWriter.newLine();
+
+            }
+
+
+            // Always close files.
+            bufferedWriter.close();
+        }
+        catch(IOException ex) {
+            System.out.println(
+                    "Error writing to file '"
+                            + fileName + "'");
+            // Or we could just do this:
+            // ex.printStackTrace();
+        }
+    }
+
+    public boolean canBuy(double price, int numSharesToBuy){
+
+        //check if there is enough money in your bank
+
+        if(price * numSharesToBuy <= moneyInTheBank){
+            //can buy
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public boolean canSell(int numSharesToSell, int numSharesOwned){
+
+        //check if you have any stocks to sell
+
+        if(numSharesToSell <= numSharesOwned){
+            //can sell
+            return true;
+        }else {
+            return false;
         }
     }
 

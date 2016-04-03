@@ -1,4 +1,6 @@
 GOOG
-0
+13
+SYMC
+1
 AAPL
 2
