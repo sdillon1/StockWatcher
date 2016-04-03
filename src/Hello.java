@@ -22,6 +22,8 @@ public class Hello {
 
     public static void main(String args[]) throws IOException {
 
+        Portfolio portfolio = new Portfolio(null);
+
 
         String symbol = "PSUN";
         String symbol2 = "SYMC";

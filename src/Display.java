@@ -16,18 +16,21 @@ public class Display {
     JTextArea stockDisplay;
     JTextArea stockInfoDisplay;
     JTextArea adviceDisplay;
+    JTextArea yourPortfolio;
     JRadioButton oneStrategy;
     JRadioButton alternateStrategy;
     JRadioButton randomStrategy;
     JRadioButton ownStrategy;
     ButtonGroup radioButtons;
     JComboBox chooseStock;
+    JButton btnAddStock;
     private String[] stocks = {"Apple", "Google", "Symantec", "Pacsun"};
 
     BuyOnPriceIncrease buyOnPriceIncrease;
     BuyOnPriceDecrease buyOnPriceDecrease;
     RandomStrategy randomStrategyStrategy;
     String currentSymbol;
+    Portfolio portfolio;
 
     public static void main(String[] args){
         Display display = new Display();
@@ -57,6 +60,8 @@ public class Display {
         stockInfoDisplay.append(""+ stock.getQuote().getVolume() + '\n');
         stockDisplay.append("Company name:" + '\n');
         stockInfoDisplay.append(""+ stock.getName() + '\n');
+        stockDisplay.append("Percent gain: \n");
+        stockInfoDisplay.append("" + stock.getQuote().getChangeInPercent() + "%");
     }
     public void go(){
         jframe = new JFrame();
@@ -70,7 +75,16 @@ public class Display {
         stockInfoDisplay = new JTextArea();
         stockInfoDisplay.setEditable(false);
         stockInfoDisplay.setBorder(new MatteBorder(1, 0, 1, 1, Color.BLACK));
-        stockInfoDisplay.setBounds(400, 50, 350, 300 );
+        stockInfoDisplay.setBounds(400, 50, 150, 300 ); //width was 350
+
+        yourPortfolio = new JTextArea();
+        yourPortfolio.setEditable(false);
+        yourPortfolio.setBorder(new MatteBorder(1, 0, 1, 1, Color.BLACK));
+        yourPortfolio.setBounds(500, 50, 200, 300 ); //250 left in width
+        yourPortfolio.setText("dongus");
+
+        portfolio = new Portfolio(yourPortfolio);
+
 
         //make advice display box
         adviceDisplay = new JTextArea();
@@ -117,6 +131,16 @@ public class Display {
 
                     }
                 }
+            }
+        });
+
+        btnAddStock= new JButton("Add 1 share");
+        btnAddStock.setBounds(250, 375, 200, 50);
+        btnAddStock.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //add 1 stock to currently selected stock
+                portfolio.addStock(getSelectedSymbol(), 1);
             }
         });
 
@@ -176,6 +200,9 @@ public class Display {
             }
         });
 
+
+
+
         //make button group
         radioButtons = new ButtonGroup();
         radioButtons.add(oneStrategy);
@@ -187,7 +214,9 @@ public class Display {
         //add components to display
         jframe.add(stockDisplay);
         jframe.add(stockInfoDisplay);
+        jframe.add(yourPortfolio);
         jframe.add(chooseStock);
+        jframe.add(btnAddStock);
         jframe.add(adviceDisplay);
         jframe.add(oneStrategy);
         jframe.add(alternateStrategy);
