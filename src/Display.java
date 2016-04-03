@@ -61,7 +61,7 @@ public class Display {
         stockInfoDisplay.append(""+ stock.getQuote().getVolume() + '\n');
         stockDisplay.append("Company name:" + '\n');
         stockInfoDisplay.append(""+ stock.getName() + '\n');
-        stockDisplay.append("Percent gain: \n");
+        stockDisplay.append("Percent gain / loss: \n");
         stockInfoDisplay.append("" + stock.getQuote().getChangeInPercent() + "%");
     }
     public void go(){
@@ -140,6 +140,8 @@ public class Display {
         btnAddStock.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //TODO maybe add on mouse hold down keep buying stock
+
                 //add 1 stock to currently selected stock
                 Stock stock = null;
                 try {
@@ -156,6 +158,7 @@ public class Display {
         btnSellStock.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //TODO maybe add on mouse hold down keep selling stock
                 //add 1 stock to currently selected stock
                 Stock stock = null;
                 try {

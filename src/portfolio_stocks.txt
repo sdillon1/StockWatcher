@@ -3,4 +3,6 @@ GOOG
 SYMC
 1
 AAPL
-2
+0
+PSUN
+20

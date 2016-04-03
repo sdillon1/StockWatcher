@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.io.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -13,6 +14,7 @@ public class Portfolio {
 
     double moneyInTheBank;
     boolean isError = false;
+    DecimalFormat decimalFormat = new DecimalFormat("#.000");
     String errorString = "";
     JTextArea jTextArea;
     PortfolioStock stockArray [];
@@ -56,7 +58,8 @@ public class Portfolio {
 
     public void updateTextArea(){
         jTextArea.setText("                   ***_Portfolio_***\n\n");
-        addToTextArea("         $$__YOUR_DOLLAS__$$: \n" + "$" + moneyInTheBank + "\n");
+        addToTextArea("         $$__YOUR_DOLLAS__$$: \n" + "$" + decimalFormat.format(moneyInTheBank) + "\n");
+        addToTextArea("\n         **__YOUR_STOCKS__**\n");
         writePortfolioToDisplay();
         if(isError == true){
             printError();
