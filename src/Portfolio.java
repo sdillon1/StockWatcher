@@ -95,6 +95,9 @@ public class Portfolio {
     }
 
     public void printPortfolio(){
+
+        print("\n**********");
+        print("Portfolio");
         print("moneyInTheBank: " + moneyInTheBank);
 
         if(stockArrayList.size() == 0){
@@ -128,6 +131,56 @@ public class Portfolio {
         }
 
         print("Stock added");
+        printPortfolio();
+        //writeToStockFile();
+
+    }
+
+    public void buyStock (String symbol, int numSharesToAdd, double price){
+
+        int whereToAdd = getStockIndex(symbol);
+
+        if(whereToAdd == -1){
+            print("here");
+
+            //symbol was not found so add stock at the end
+            stockArrayList.add(new PortfolioStock(symbol, numSharesToAdd));
+            moneyInTheBank = moneyInTheBank - (numSharesToAdd * price);
+
+        }else{
+            print("here2");
+            //just update the shares owned
+            stockArrayList.get(whereToAdd).printStock();
+            stockArrayList.get(whereToAdd).addMoreStock(numSharesToAdd);
+            stockArrayList.get(whereToAdd).printStock();
+            moneyInTheBank = moneyInTheBank - (numSharesToAdd * price);
+
+        }
+
+        print("Stock bought");
+        printPortfolio();
+        writeToStockFile();
+
+    }
+
+    public void sellStock (String symbol, int numSharesToSell, double price){
+
+        int whereToAdd = getStockIndex(symbol);
+
+        if(whereToAdd == -1){
+
+            //symbol was not found so add stock at the end
+            print("Error: The stock is not there");
+
+        }else{
+
+            //just update the shares owned
+            stockArrayList.get(whereToAdd).sellSomeStock(numSharesToSell);
+            moneyInTheBank = moneyInTheBank + (numSharesToSell * price);
+
+        }
+
+        print("Stock sold");
         printPortfolio();
         writeToStockFile();
 

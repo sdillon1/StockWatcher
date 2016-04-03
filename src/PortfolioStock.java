@@ -31,6 +31,10 @@ public class PortfolioStock {
         numShares = numShares + sharesToAdd;
     }
 
+    public void sellSomeStock(int sharesToSell){
+        numShares = numShares - sharesToSell;
+    }
+
     public void printStock(){
         System.out.println("Symbol: " + symbol + " Shares: " + numShares);
     }

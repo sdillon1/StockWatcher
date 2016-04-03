@@ -24,6 +24,7 @@ public class Display {
     ButtonGroup radioButtons;
     JComboBox chooseStock;
     JButton btnAddStock;
+    JButton btnSellStock;
     private String[] stocks = {"Apple", "Google", "Symantec", "Pacsun"};
 
     BuyOnPriceIncrease buyOnPriceIncrease;
@@ -134,13 +135,35 @@ public class Display {
             }
         });
 
-        btnAddStock= new JButton("Add 1 share");
-        btnAddStock.setBounds(250, 375, 200, 50);
+        btnAddStock= new JButton("+");
+        btnAddStock.setBounds(250, 375, 50, 50);
         btnAddStock.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //add 1 stock to currently selected stock
-                portfolio.addStock(getSelectedSymbol(), 1);
+                Stock stock = null;
+                try {
+                     stock = YahooFinance.get(getSelectedSymbol());
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+                portfolio.buyStock(getSelectedSymbol(), 1, stock.getQuote().getPrice().doubleValue());
+            }
+        });
+
+        btnSellStock = new JButton("-");
+        btnSellStock.setBounds(350, 375, 50, 50);
+        btnSellStock.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //add 1 stock to currently selected stock
+                Stock stock = null;
+                try {
+                    stock = YahooFinance.get(getSelectedSymbol());
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+                portfolio.sellStock(getSelectedSymbol(), 1, stock.getQuote().getPrice().doubleValue());
             }
         });
 
@@ -217,6 +240,7 @@ public class Display {
         jframe.add(yourPortfolio);
         jframe.add(chooseStock);
         jframe.add(btnAddStock);
+        jframe.add(btnSellStock);
         jframe.add(adviceDisplay);
         jframe.add(oneStrategy);
         jframe.add(alternateStrategy);
