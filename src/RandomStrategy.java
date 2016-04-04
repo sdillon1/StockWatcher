@@ -69,7 +69,7 @@ public class RandomStrategy extends Stock_Interface{
     }
 
     @Override
-    public int whatShouldIDo() {
+    public void whatShouldIDo() {
 
          /*
          *  return 1 if should buy
@@ -88,20 +88,20 @@ public class RandomStrategy extends Stock_Interface{
             //buy
             print(symbol + " "+ "BUY!" + " using: " + strategyName);
             printAdvice(symbol, BUY);
-            return 1;
+
 
         }else if (checkTime() == true){
 
             //sell
             print(symbol + " "+ "SELL!" + " using: " + strategyName);
             printAdvice(symbol, SELL);
-            return 3;
+
 
         }else{
             //else hold
             print(symbol + " "+ "HOLD!" + " using: " + strategyName);
             printAdvice(symbol, HOLD);
-            return 2;
+
         }
 
     }

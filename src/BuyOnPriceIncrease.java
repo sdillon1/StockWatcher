@@ -58,7 +58,7 @@ public class BuyOnPriceIncrease extends Stock_Interface {
     }
 
     @Override
-    public int whatShouldIDo() {
+    public void whatShouldIDo() {
         /*
          *  return 1 if should buy
          *  return 2 if should hold
@@ -99,7 +99,7 @@ public class BuyOnPriceIncrease extends Stock_Interface {
 
         }
 
-        return -1;
+
     }
 
     @Override

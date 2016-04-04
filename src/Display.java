@@ -30,6 +30,7 @@ public class Display {
     BuyOnPriceIncrease buyOnPriceIncrease;
     BuyOnPriceDecrease buyOnPriceDecrease;
     RandomStrategy randomStrategyStrategy;
+    CustomStrategy customStrategy;
     String currentSymbol;
     Portfolio portfolio;
 
@@ -217,12 +218,18 @@ public class Display {
 
             }
         });
-        ownStrategy = new JRadioButton("Crazy strategy");
+        ownStrategy = new JRadioButton("Winning Strategy");
         ownStrategy.setBounds(610, 485, 150, 20);
         ownStrategy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 currentSymbol = getSelectedSymbol();
+
+                try {
+                    customStrategy = new CustomStrategy(currentSymbol, adviceDisplay);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
 

@@ -16,7 +16,7 @@ abstract public class Stock_Interface {
 
     public abstract Stock getStock();
     public abstract void setStock();
-    public abstract int whatShouldIDo();
+    public abstract void whatShouldIDo();
     public abstract void initializeStrategy();
     public abstract void printStuff();
     public abstract void print(String s);
