@@ -1,8 +1,2 @@
-PSUN
-25
-AAPL
-9
-SYMC
-0
 GOOG
-0
+1

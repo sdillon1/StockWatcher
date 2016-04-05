@@ -47,9 +47,8 @@ public class Display {
         stockDisplay.append("Current price of the stock:" + '\n');
         stockInfoDisplay.append("" + stock.getQuote().getPrice() + '\n');
         stockDisplay.append("Last trade day for the stock:" + '\n');
-        stockInfoDisplay.append("" + stock.getQuote().getLastTradeDateStr() + '\n');
-        stockDisplay.append("Last time of trade for the stock:" + '\n');
-        stockInfoDisplay.append(""+ stock.getQuote().getLastTradeTimeStr() + '\n');
+        stockInfoDisplay.append("" + stock.getQuote().getLastTradeTime().getTime() + '\n');
+
         stockDisplay.append("Price at which the stock opened the day:" + '\n');
         stockInfoDisplay.append(""+ stock.getQuote().getOpen() + '\n');
         stockDisplay.append("Highest price of the stock for the day:" + '\n');

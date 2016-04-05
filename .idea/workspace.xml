@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d6c934a6-9092-4af6-a4e4-c27d3fe92dbf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BuyOnPriceDecrease.java" afterPath="$PROJECT_DIR$/src/BuyOnPriceDecrease.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BuyOnPriceIncrease.java" afterPath="$PROJECT_DIR$/src/BuyOnPriceIncrease.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CustomStrategy.java" afterPath="$PROJECT_DIR$/src/CustomStrategy.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Display.java" afterPath="$PROJECT_DIR$/src/Display.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RandomStrategy.java" afterPath="$PROJECT_DIR$/src/RandomStrategy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Stock_Interface.java" afterPath="$PROJECT_DIR$/src/Stock_Interface.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bank.txt" afterPath="$PROJECT_DIR$/src/bank.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/portfolio_stocks.txt" afterPath="$PROJECT_DIR$/src/portfolio_stocks.txt" />
     </list>
@@ -32,21 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Hello.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Hello.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="48" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="bank.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/bank.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -85,8 +70,31 @@
         <entry file="file://$PROJECT_DIR$/src/portfolio_stocks.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Portfolio.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Portfolio.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#setError#0;class#Portfolio#0" expanded="false" />
+                <element signature="method#writePortfolioToDisplay#0;class#Portfolio#0" expanded="false" />
+                <element signature="method#printPortfolio#0;class#Portfolio#0" expanded="false" />
+                <element signature="method#addStock#0;class#Portfolio#0" expanded="false" />
+                <element signature="method#buyStock#0;class#Portfolio#0" expanded="false" />
+                <element signature="method#getStockIndex#0;class#Portfolio#0" expanded="false" />
+                <element signature="method#writeToStockFile#0;class#Portfolio#0" expanded="false" />
+                <element signature="method#readBankMoney#0;class#Portfolio#0" expanded="false" />
+                <element signature="method#writeBankMoney#0;class#Portfolio#0" expanded="false" />
+                <element signature="method#canBuy#0;class#Portfolio#0" expanded="false" />
+                <element signature="method#canSell#0;class#Portfolio#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,8 +102,8 @@
       <file leaf-file-name="Display.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Display.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.776378">
-              <caret line="220" column="47" selection-start-line="220" selection-start-column="47" selection-end-line="220" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.74488187">
+              <caret line="59" column="88" selection-start-line="59" selection-start-column="88" selection-end-line="59" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -177,12 +185,12 @@
         <option value="$PROJECT_DIR$/src/Hello.java" />
         <option value="$PROJECT_DIR$/src/PortfolioStock.java" />
         <option value="$PROJECT_DIR$/src/Portfolio.java" />
-        <option value="$PROJECT_DIR$/src/portfolio_stocks.txt" />
-        <option value="$PROJECT_DIR$/src/bank.txt" />
         <option value="$PROJECT_DIR$/src/BuyOnPriceIncrease.java" />
         <option value="$PROJECT_DIR$/src/CustomStrategy.java" />
         <option value="$PROJECT_DIR$/src/BuyOnPriceDecrease.java" />
         <option value="$PROJECT_DIR$/src/RandomStrategy.java" />
+        <option value="$PROJECT_DIR$/src/bank.txt" />
+        <option value="$PROJECT_DIR$/src/portfolio_stocks.txt" />
         <option value="$PROJECT_DIR$/src/Display.java" />
       </list>
     </option>
@@ -218,20 +226,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StockWatcher" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StockWatcher" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
@@ -291,6 +285,20 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="StockWatcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="StockWatcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -698,7 +706,6 @@
           <caret line="99" column="24" selection-start-line="99" selection-start-column="24" selection-end-line="99" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#initializePortfolio#0;class#Portfolio#0" expanded="false" />
             <element signature="method#setError#0;class#Portfolio#0" expanded="false" />
             <element signature="method#writePortfolioToDisplay#0;class#Portfolio#0" expanded="false" />
             <element signature="method#printPortfolio#0;class#Portfolio#0" expanded="false" />
@@ -706,7 +713,6 @@
             <element signature="method#buyStock#0;class#Portfolio#0" expanded="false" />
             <element signature="method#getStockIndex#0;class#Portfolio#0" expanded="false" />
             <element signature="method#writeToStockFile#0;class#Portfolio#0" expanded="false" />
-            <element signature="method#readStocksOwned#0;class#Portfolio#0" expanded="false" />
             <element signature="method#readBankMoney#0;class#Portfolio#0" expanded="false" />
             <element signature="method#writeBankMoney#0;class#Portfolio#0" expanded="false" />
             <element signature="method#canBuy#0;class#Portfolio#0" expanded="false" />
@@ -1030,37 +1036,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Portfolio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="34" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#initializePortfolio#0;class#Portfolio#0" expanded="false" />
-            <element signature="method#setError#0;class#Portfolio#0" expanded="false" />
-            <element signature="method#writePortfolioToDisplay#0;class#Portfolio#0" expanded="false" />
-            <element signature="method#printPortfolio#0;class#Portfolio#0" expanded="false" />
-            <element signature="method#addStock#0;class#Portfolio#0" expanded="false" />
-            <element signature="method#buyStock#0;class#Portfolio#0" expanded="false" />
-            <element signature="method#getStockIndex#0;class#Portfolio#0" expanded="false" />
-            <element signature="method#writeToStockFile#0;class#Portfolio#0" expanded="false" />
-            <element signature="method#readStocksOwned#0;class#Portfolio#0" expanded="false" />
-            <element signature="method#readBankMoney#0;class#Portfolio#0" expanded="false" />
-            <element signature="method#writeBankMoney#0;class#Portfolio#0" expanded="false" />
-            <element signature="method#canBuy#0;class#Portfolio#0" expanded="false" />
-            <element signature="method#canSell#0;class#Portfolio#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bank.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Hello.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1073,14 +1048,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/portfolio_stocks.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1140,10 +1107,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Portfolio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setError#0;class#Portfolio#0" expanded="false" />
+            <element signature="method#writePortfolioToDisplay#0;class#Portfolio#0" expanded="false" />
+            <element signature="method#printPortfolio#0;class#Portfolio#0" expanded="false" />
+            <element signature="method#addStock#0;class#Portfolio#0" expanded="false" />
+            <element signature="method#buyStock#0;class#Portfolio#0" expanded="false" />
+            <element signature="method#getStockIndex#0;class#Portfolio#0" expanded="false" />
+            <element signature="method#writeToStockFile#0;class#Portfolio#0" expanded="false" />
+            <element signature="method#readBankMoney#0;class#Portfolio#0" expanded="false" />
+            <element signature="method#writeBankMoney#0;class#Portfolio#0" expanded="false" />
+            <element signature="method#canBuy#0;class#Portfolio#0" expanded="false" />
+            <element signature="method#canSell#0;class#Portfolio#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/portfolio_stocks.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bank.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Display.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.776378">
-          <caret line="220" column="47" selection-start-line="220" selection-start-column="47" selection-end-line="220" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.74488187">
+          <caret line="59" column="88" selection-start-line="59" selection-start-column="88" selection-end-line="59" selection-end-column="88" />
           <folding />
         </state>
       </provider>
