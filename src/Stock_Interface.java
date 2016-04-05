@@ -35,9 +35,9 @@ abstract public class Stock_Interface {
             advice = "SELL";
         }
 
-        print("An old wise man said to " + advice + " the stock: " + stockSymbol);
+        print("The strategy chose indicates that you should " + advice + " the stock: " + stockSymbol);
         adviceDisplay.setText("");
-        adviceDisplay.append("An old wise man said to " + advice + " the stock: " + stockSymbol);
+        adviceDisplay.append("The strategy chose indicates that you should " + advice + " the stock: " + stockSymbol);
     }
 
 }

@@ -1,6 +1,8 @@
 PSUN
 25
 AAPL
-4
+9
 SYMC
-17
+0
+GOOG
+0

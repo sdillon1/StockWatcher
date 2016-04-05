@@ -57,9 +57,9 @@ public class Portfolio {
     }
 
     public void updateTextArea(){
-        jTextArea.setText("                   ***_Portfolio_***\n\n");
-        addToTextArea("         $$__YOUR_DOLLAS__$$: \n" + "$" + decimalFormat.format(moneyInTheBank) + "\n");
-        addToTextArea("\n         **__YOUR_STOCKS__**\n");
+        jTextArea.setText("                   Your Portfolio\n\n");
+        addToTextArea("         Your Money: \n" + "$" + decimalFormat.format(moneyInTheBank) + "\n");
+        addToTextArea("\n         Your Stocks\n");
         writePortfolioToDisplay();
         if(isError == true){
             printError();

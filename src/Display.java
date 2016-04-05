@@ -83,7 +83,6 @@ public class Display {
         yourPortfolio.setEditable(false);
         yourPortfolio.setBorder(new MatteBorder(1, 0, 1, 1, Color.BLACK));
         yourPortfolio.setBounds(550, 50, 200, 300 ); //250 left in width
-        yourPortfolio.setText("dongus");
 
         portfolio = new Portfolio(yourPortfolio);
 
@@ -133,6 +132,8 @@ public class Display {
 
                     }
                 }
+                radioButtons.clearSelection();
+                adviceDisplay.setText("");
             }
         });
 
@@ -173,7 +174,6 @@ public class Display {
 
         //make radio buttons
         oneStrategy = new JRadioButton("Buy if increased");
-        oneStrategy.setSelected(true);
         oneStrategy.setBounds(610, 425, 150, 20);
         oneStrategy.addActionListener(new ActionListener() {
             @Override
